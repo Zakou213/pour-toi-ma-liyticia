@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour toi ❤️</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    background:linear-gradient(135deg,#ff9ecf,#ffd6e8);
+    font-family:Arial,sans-serif;
+    text-align:center;
+}
+
+.container{
+    margin-top:120px;
+    background:white;
+    width:80%;
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+
+h1{
+    color:#ff4081;
+}
+
+button{
+    padding:12px 25px;
+    font-size:20px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+#oui{
+    background:#ff4081;
+    color:white;
+}
+
+#non{
+    background:#888;
+    color:white;
+    position:absolute;
+}
+
+.heart{
+    position:absolute;
+    color:red;
+    font-size:25px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-50px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+#message{
+    display:none;
+    margin-top:20px;
+    color:#ff4081;
+    font-size:28px;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>❤️ Une petite question ❤️</h1>
+
+    <h2>Tu me ferais un bisous ? 🥺</h2>
+
+    <button id="oui">Oui ❤️</button>
+    <button id="non">Non 😅</button>
+
+    <div id="message">
+        ❤️ Merciii je t'aime ma vie ❤️<br>
+        3elmagh bli atqevladh hehe🥰
+    </div>
+</div>
+
+<script>
+const non = document.getElementById("non");
+
+function bougerBouton(){
+    non.style.left =
+        Math.random()*(window.innerWidth-120)+"px";
+
+    non.style.top =
+        Math.random()*(window.innerHeight-60)+"px";
+}
+
+non.addEventListener("touchstart",e=>{
+    e.preventDefault();
+    bougerBouton();
+});
+
+non.addEventListener("click",e=>{
+    e.preventDefault();
+    bougerBouton();
+});
+
+document.getElementById("oui").addEventListener("click",()=>{
+    document.getElementById("message").style.display="block";
+});
+
+// Génération des cœurs
+for(let i=0;i<30;i++){
+    let heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=
+        (3+Math.random()*5)+"s";
+
+    heart.style.fontSize=
+        (15+Math.random()*30)+"px";
+
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
